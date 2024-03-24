@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Elena Garcia </title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png.png" alt="Staff Portal Logo">
+        </div>
+        <h1> Elena Garcia </h1> 
+    </header>
+
+    <div class="container">
+        <section class="personal-details">
+            <h2>Patient Details</h2>
+            <div class="details">
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Age : 5 </p>  
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Phone Number: (555) 123-4567</p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Alternate Phone Number: (555) 987-6543</p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Insurance ID: XYZ123456789</p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Mother: Maria Garcia </p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Father: Alejandro Garcia</p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Email: maria.garcia@example.com </p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Social Security Number (SSN): 987-65-4321 </p> 
+                 <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Address: 123 Main Street, Anytown, USA</p> 
+
+                <img src="Elena.jpg" alt="Elena's Image">
+            </div>
+        </section>
+        <section class="medical-record">
+            <h2>Medical Record</h2>
+            <div class="record">
+                <!-- Set a minimum height for the textarea -->
+                <textarea id="medicalRecordPatient2" rows="5" cols="50" style="min-height: 100px;" placeholder="Enter medical record details here..."></textarea>
+                <button onclick="saveMedicalRecord('medicalRecordPatient2')">Save</button>
+            </div>
+        </section>
+    </div>
+
+     <script>
+        function saveMedicalRecord(textareaId) {
+            var medicalRecordText = document.getElementById(textareaId).value;
+            localStorage.setItem(textareaId, medicalRecordText);
+            alert("Medical record saved successfully!");
+            // Resize textarea based on content
+            resizeTextarea(textareaId);
+        }
+
+        function resizeTextarea(textareaId) {
+            var textarea = document.getElementById(textareaId);
+            textarea.style.height = "auto"; // Reset height to auto to recalculate
+            textarea.style.height = (textarea.scrollHeight) + "px"; // Set the height to the scroll height of the content
+        }
+
+        window.onload = function() {
+            var textareaId = "medicalRecordPatient2"; // Change this to match the textarea ID
+            if (typeof(Storage) !== "undefined" && localStorage.getItem(textareaId)) {
+                var medicalRecordText = localStorage.getItem(textareaId);
+                document.getElementById(textareaId).value = medicalRecordText;
+                // Resize textarea based on loaded content
+                resizeTextarea(textareaId);
+            }
+        };
+
+        // Call resizeTextarea whenever the content of the textarea changes
+        document.getElementById("medicalRecordPatient2").addEventListener("input", function() {
+            resizeTextarea("medicalRecordPatient2");
+        });
+    </script>
+
+</body>
+</html>

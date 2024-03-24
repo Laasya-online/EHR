@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png.png" alt="Staff Portal Logo">
+        </div>
+        <h1> Dr. Dave Sullivan</h1> 
+    </header>
+    <div class="container">
+        <section class="doctor-profile">
+            <h2>Doctor Profile</h2>
+            <div class="profile-details">
+                
+                <img src="doctor.jpg" alt="Doctor Image">
+                <p>Email: dr.davesullivan@healthlife.com</p>  
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Number of Patients: 50</p> 
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Date of Birth: 01/01/1970</p>
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Address: 456 Oak Street, Anytown, USA</p>  
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Contact Number: (555) 555-5555</p>   
+                <!-- Security mistake: Directly embedding user-input without proper validation or sanitization -->
+                <p>Specialization: Pediatrician</p>
+            </div>
+        </section>
+        <section class="patient-list">
+            <h2>List of Patients</h2>
+            <ul>
+                <!-- Security mistake: Potential for injection if patient names contain scripts -->
+                <li>
+                    <span>Aisha Schmidt</span> 
+                    <button onclick="viewPatientHistory('patient_history.html')">View History</button>
+                </li>
+                <li>
+                    <span>Elena Garcia</span>  
+                    <button onclick="viewPatientHistory('patient2.html')">View History</button>
+                </li>
+                <li>Robert Davis</li>
+                <li>Sarah Wilson</li>
+                <li>...</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Function to redirect to the patient history page for the selected patient
+        function viewPatientHistory(patientPage) {
+            window.location.href = patientPage;
+        }
+    </script>  
+
+</body>
+</html>
